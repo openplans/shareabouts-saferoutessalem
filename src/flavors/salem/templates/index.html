@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block site-title %}
+<a href="/">{{ config.app.name }}</a>
+{% endblock %}
+
+{% block meta %}
+  {% if place %}
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ place.properties.name }}">
+    <meta name="twitter:description" content="{{ place.properties.description }}">
+    {% with attachment=place.properties.attachments|first %}
+    <meta name="twitter:image:src" content="{{ attachment.file }}">
+    {% endwith %}
+    {% comment %} TODO: Fill this in when we know if the username is from twitter
+      <meta name="twitter:creator" content="place.submitter.username">
+    {% endcomment %}
+
+    <!-- Facebook -->
+    <meta property="og:site_name" content="{{ config.app.title }}" />
+    <meta property="og:title" content="{{ place.properties.name }}" />
+    <meta property="og:description" content="{{ place.properties.description }}" />
+    {% with attachment=place.properties.attachments|first %}
+    <meta name="og:image" content="{{ attachment.file }}">
+    {% endwith %}
+  {% else %}
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ config.app.title }}">
+    <meta name="twitter:description" content="{{ config.app.meta_description }}">
+
+    <!-- Facebook -->
+    <meta property="og:site_name" content="{{ config.app.title }}" />
+    <meta property="og:title" content="{{ config.app.title }}" />
+    <meta property="og:description" content="{{ config.app.meta_description }}" />
+  {% endif%}
+{% endblock %}
+
+<!--
+  This will place content at the top of the side bar
+ -->
+{% block sidebar %}
+{% endblock %}
+
+<!--
+  This will place content in the colophon below the map
+ -->
+{% block colophon %}
+<p id="powered-by">{% blocktrans %}Powered by{% endblocktrans %} <a href="http://shareabouts.org/" class="shareabouts-logo" target="_blank">Shareabouts</a>, <span class="nobreak">a project of <a href="http://openplans.org/" class="openplans-logo" target="_blank">OpenPlans</a>.</span></p>
+{% endblock %}
+
+<!--
+  Analytics, custom JS, and such go here
+ -->
+{% block includes %}
+<script type="text/javascript">
+
+  $(Shareabouts).on('panelshow', function(evt, app, path) {
+    
+    // turn off some select items
+    $("#place-location_type>option:eq(0)").prop('disabled', true);
+    
+    // hide pointless location type label
+    //$("label[for=place-location_type]").hide();  
+
+    // add some classes to make selections easier...
+
+    // traffic issues
+    $("[id*=traffic]").addClass("traffic");
+    $("label[for*=traffic]").addClass("traffic checkbox-label").hide();
+    
+    // pedestrian issues
+    $("[id*=pedestrian]").addClass("pedestrian");
+    $("label[for*=pedestrian]").addClass("pedestrian checkbox-label").hide();
+
+    // public space issues
+    $("[id*=publicspace]").addClass("publicspace");
+    $("label[for*=publicspace]").addClass("publicspace checkbox-label").hide();
+
+    // bike traffic issues
+    $("[id*=bike]").addClass("bike");
+    $("label[for*=bike]").addClass("bike checkbox-label").hide();
+
+    //add a label to the name and submit boxes
+    $("[id*=place-submitter]").addClass("existing problem new");
+    $("label[for*=place-submitter]").addClass("existing problem new");
+    $("#save-place-btn").addClass("existing problem new");
+
+    //now hide everything...
+    $(".traffic,.pedestrian,.publicspace,.bike").hide();
+
+    $("#place-location_type").change(function() {
+
+      // set everything to have hidden class
+    $(".traffic,.pedestrian,.publicspace,.bike").hide();
+
+      // choose what will show up
+      var chosen = $("#place-location_type").val();
+
+      switch (chosen)
+      {
+        case "no-choice":
+          break;
+        case "Autos":
+          $(".traffic").show();
+          break;
+        case "Pedestrians":
+          $(".pedestrian").show();
+          break;
+        case "PublicSpace":
+          $(".publicspace").show();
+          break;
+        case "Bikes":
+          $(".bike").show();
+          break;
+        default:
+          break;            
+      }
+
+    });
+     
+  });
+</script>
+{% endblock %}
