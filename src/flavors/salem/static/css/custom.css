@@ -46,18 +46,19 @@
 .btn,
 .btn:visited,
 .btn:link {
-  background-color: #FF8600;
+  background-color: #47BD3F;
   color: #000;
 }
 
 .btn:hover {
-  background-color: #DD6600;
+  background-color: #47BD3F;
   color: #fff;
 }
 
 #add-place,
+.submit-btn,
 #add-place:hover {
-  font-weight: 800;
+  background-color: #FF8600;
 }
 
 .submit-btn {
