@@ -115,67 +115,45 @@ place:
       options:
         - label: _(Please choose a category)
           value: ""
-        - label: _(Auto Traffic issues)
-          value: "Autos"
-        - label: _(Pedestrian Traffic issues)
+        - label: _(Issues While Walking)
           value: "Pedestrians"
-        - label: _(Bike Traffic issues)
+        - label: _(Issues While Cycling)
           value: "Bikes"
-        - label: _(Public Space)
+        - label: _(Public Space Improvements)
           value: "PublicSpace"          
       name: location_type
       
     # Pedestrian traffic checkboxes
-    - prompt: Uneven or indirect path
+    - prompt: Sidewalk problem
       type: checkbox
       name: pedestrian1
       attrs:
         - key: value
-          value: Uneven or indirect path
-    - prompt: Sidewalk too narrow or missing
+          value: Sidewalk problem
+    - prompt: Dangerous intersection
       type: checkbox
       name: pedestrian2
       attrs:
         - key: value
-          value: Sidewalk too narrow or missing
-    - prompt: Intersection or crossing issue
+          value: Dangerous intersection
+    - prompt: Crosswalk problem
       type: checkbox
       name: pedestrian3
       attrs:
         - key: value
-          value: Intersection or crossing issue
-    - prompt: Other
+          value: Crosswalk problem
+    - prompt: Speeding traffic
       type: checkbox
       name: pedestrian4
       attrs:
         - key: value
+          value: Speeding traffic
+    - prompt: Other
+      type: checkbox
+      name: pedestrian5
+      attrs:
+        - key: value
           value: Other
-
-    # traffic issues
-    - prompt: Speeding
-      type: checkbox
-      name: traffic1
-      attrs:
-        - key: value
-          value: Speeding
-    - prompt: Confusing intersection
-      type: checkbox
-      name: traffic2
-      attrs:
-        - key: value
-          value: Confusing intersection
-    - prompt: Cut-through vehicles
-      type: checkbox
-      name: traffic3
-      attrs:
-        - key: value
-          value: Cut-through vehicles
-    - prompt: Other (please explain)
-      type: checkbox
-      name: traffic4
-      attrs:
-        - key: value
-          value: Other (please explain)
 
     # bike issues
     - prompt: Obstacle or hazard in path
@@ -184,53 +162,53 @@ place:
       attrs:
         - key: value
           value: Obstacle or hazard in path
-    - prompt: Bike infrastructure needed
+    - prompt: Bike path needed
       type: checkbox
       name: bike2
       attrs:
         - key: value
-          value: Bike infrastructure needed
+          value: Bike path needed
     - prompt: Bike parking needed
       type: checkbox
       name: bike3
       attrs:
         - key: value
           value: Bike parking needed
-    - prompt: Other
+    - prompt: Unsafe motor vehicle conditions
       type: checkbox
       name: bike4
+      attrs:
+        - key: value
+          value: Unsafe motor vehicle conditions
+    - prompt: Other
+      type: checkbox
+      name: bike5
       attrs:
         - key: value
           value: Other
 
     # public space
-    - prompt: Greenspace here please
+    - prompt: Greenspace or community garden needed
       type: checkbox
       name: publicspace1
       attrs:
         - key: value
-          value: Greenspace here please
-    - prompt: Community garden here would be nice
+          value: Greenspace or community garden needed
+    - prompt: Street tree needed or in poor shape
       type: checkbox
       name: publicspace2
       attrs:
         - key: value
-          value: Community garden here would be nice
-    - prompt: More street trees
+          value: Street tree needed or in poor shape
+    - prompt: Area does not feel safe
       type: checkbox
       name: publicspace3
       attrs:
         - key: value
-          value: More street trees
-    - prompt: Area does not feel safe or is unattractive
-      type: checkbox
-      name: publicspace4
-      attrs:
-        - key: value
-          value: Area does not feel safe or is unattractive
+          value: Area does not feel safe
     - prompt: Other
       type: checkbox
-      name: publicspace5
+      name: publicspace4
       attrs:
         - key: value
           value: Other
