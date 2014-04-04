@@ -30,20 +30,6 @@ map:
 # The keys show up in the dropdown list when you are adding a new place
 # The values map the place type to map icons (defined below).
 place_types:
-  Autos:
-    label: _(Auto Traffic issue)
-    rules:
-      - condition: '"{{location_type}}" === "Autos"'
-        icon:
-          iconUrl: /static/css/images/markers/dot-70d52c.png
-          iconSize: [17, 18]
-          iconAnchor: [9, 9]
-        focus_icon:
-          iconUrl: /static/css/images/markers/marker-70d52c.png
-          shadowUrl: /static/css/images/marker-shadow.png
-          iconSize: [25, 41]
-          shadowSize: [41, 41]
-          iconAnchor: [12, 41]
   Pedestrians:
     label: _(Pedestrian traffic issue)
     rules:
